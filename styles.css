@@ -1,0 +1,186 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu-icon {
+    font-size: 2.5em;
+    color: #2a9d8f;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: #2a9d8f;
+    text-align: center;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.header-icons i {
+    font-size: 2.5em;
+    color: #333;
+    cursor: pointer;
+}
+main{
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+header .logo {
+    font-size: 2.5em;
+    color: #2a9d8f;
+    font-weight: bold;
+}
+
+/* Menú desplegable */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Escondido fuera de la pantalla */
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 60px;
+    transition: left 0.3s ease; /* Animación de desplazamiento */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* Estilo de Menú Abierto */
+.nav-menu.open {
+    left: 0; /* Muestra el menú */
+}
+
+.nav-menu ul li a:hover {
+    color: #2a9d8f; /* Cambia el color al hacer hover */
+}
+
+
+/* Sección Principal */
+main {
+    padding: 20px;
+}
+
+.dashboard h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.todays-meals {
+    display: flex;
+    gap: 20px;
+}
+
+.meal-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    flex: 1;
+}
+
+.meal-card img {
+    width: 80%;
+    height: 59%;
+    border-radius: 12px;
+}
+
+.meal-card h2 {
+    margin: 10px 0;
+    color: #2a9d8f;
+}
+
+.meal-card button {
+    background-color: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Sección de Progreso */
+.progress {
+    margin-top: 40px;
+}
+
+.progress-charts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.chart {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.chart:last-child {
+    margin-right: 0;
+}
+
+
+.week-plan {
+    padding-top: 20px;
+}
+
+/* Pie de Página */
+footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer .social-links a {
+    text-decoration: none;
+    color: #2a9d8f;
+    margin: 0 10px;
+}
