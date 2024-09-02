@@ -263,6 +263,169 @@ button[type="submit"]:hover {
     color: #2a9d8f;
 }
 
+/* Estilo para el contenedor de login */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #2a9d8f;
+    margin-bottom: 20px;
+}
+
+.login-container .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container button[type="submit"] {
+    background-color: #2a9d8f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #21867a;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.register-link a {
+    color: #2a9d8f;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Planificador-Menus */
+
+.menu-planner {
+    margin: 50px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.menu-planner table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.menu-planner th, .menu-planner td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.menu-planner th {
+    background-color: #2a9d8f;
+    color: #fff;
+}
+
+.menu-planner select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.save-btn {
+    background-color: #2a9d8f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #21867a;
+}
+
+/* Plan-Comidas */
+.meal-plan-container {
+    margin: 50px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.day-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.day-section h2 {
+    color: #2a9d8f;
+    margin-bottom: 20px;
+}
+
+.meal-time {
+    margin-bottom: 20px;
+}
+
+.meal-time label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.meal-selector, .meal-time input[type="number"], .meal-time textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.save-btn {
+    background-color: #2a9d8f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.save-btn:hover {
+    background-color: #21867a;
+}
+
 
 /* Foooter */
 footer {
