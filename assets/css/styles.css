@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    text-decoration: none;
 }
 
 /* Encabezado */
@@ -49,6 +50,7 @@ main{
 
 h1 {
     font-size: 40px;
+    color: #2a9d8f;
 }
 
 header .logo {
