@@ -5,7 +5,7 @@
 <!-- Link del boostrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <!-- Link del css -->
-<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 <!-- Link de los Icon -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -26,7 +26,7 @@
 
         <!-- Iconos de favoritos y login -->
         <div class="header-icons">
-            <i class="fas fa-heart"></i>
+            <a href="mis-recetas.html"><i class="fas fa-heart"></i></a>
             <i class="fas fa-user-circle"></i>
         </div>
     </header>
@@ -34,8 +34,9 @@
     <!-- Menú desplegable -->
     <nav class="nav-menu" id="nav-menu">
         <ul>
-            <li><a href="index.html">Inicio</a></li>
+            <li><a href="../../index.html">Inicio</a></li>
             <li><a href="plan-comidas.html">Plan de Comidas</a></li>
+            <li><a href="nueva-receta.html">Nueva Receta</a></li>
             <li><a href="mis-recetas.html">Mis Recetas</a></li>
             <li><a href="lista-compras.html">Lista de Compras</a></li>
             <li><a href="planificador-menus.html">Planificador de Menús</a></li>
@@ -43,10 +44,13 @@
         </ul>
     </nav>
 
+    <!-- Sección Principal -->
+
     <main>
         <h1>Plan de Comidas</h1>
         <p>Gestiona tu plan de comidas aquí.</p>
     </main>
+
 
     <!-- Pie de Página -->
     <footer>
@@ -56,6 +60,7 @@
         </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
+
