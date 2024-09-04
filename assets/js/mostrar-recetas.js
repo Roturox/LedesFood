@@ -2,14 +2,49 @@
 const savedRecipes = [
     {
         title: "Ensalada César",
-        image: "../assets/images/amuerzo.jpg",
+        image: "../images/desayuno.jpg",
         description: "Una ensalada deliciosa y fresca con lechuga, pollo, crutones y aderezo César.",
         cookingTime: 15,
         ingredients: "Lechuga, pollo, crutones, aderezo César"
     },
     {
         title: "Pizza Margherita",
-        image: "assets/images/pizza-margherita.jpg",
+        image: "../images/desayuno.jpg",
+        description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
+        cookingTime: 25,
+        ingredients: "Salsa de tomate, mozzarella, albahaca"
+    },
+    {
+        title: "Pizza Margherita",
+        image: "../images/desayuno.jpg",
+        description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
+        cookingTime: 25,
+        ingredients: "Salsa de tomate, mozzarella, albahaca"
+    },
+    {
+        title: "Pizza Margherita",
+        image: "../images/desayuno.jpg",
+        description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
+        cookingTime: 25,
+        ingredients: "Salsa de tomate, mozzarella, albahaca"
+    },
+    {
+        title: "Pizza Margherita",
+        image: "../images/desayuno.jpg",
+        description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
+        cookingTime: 25,
+        ingredients: "Salsa de tomate, mozzarella, albahaca"
+    },
+    {
+        title: "Pizza Margherita",
+        image: "../images/desayuno.jpg",
+        description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
+        cookingTime: 25,
+        ingredients: "Salsa de tomate, mozzarella, albahaca"
+    },
+    {
+        title: "Pizza Margherita",
+        image: "../images/desayuno.jpg",
         description: "Pizza tradicional italiana con salsa de tomate, mozzarella y albahaca fresca.",
         cookingTime: 25,
         ingredients: "Salsa de tomate, mozzarella, albahaca"

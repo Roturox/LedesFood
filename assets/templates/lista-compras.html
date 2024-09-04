@@ -48,7 +48,16 @@
 
     <main>
         <h1>Lista de Compras</h1>
-        <p>Organiza tu lista de compras basada en tus recetas.</p>
+        <div class="shopping-list-container">
+            <input type="text" id="new-item" placeholder="Agregar nuevo ingrediente...">
+            <button id="add-item" class="add-btn">Agregar</button>
+
+            <ul id="shopping-list">
+                <!-- Aquí se llenarán los ingredientes dinámicamente -->
+            </ul>
+
+            <button id="clear-completed" class="clear-btn">Limpiar Comprados</button>
+        </div>
     </main>
 
 
@@ -59,8 +68,9 @@
             <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
         </div>
     </footer>
-
+        
     <script src="../js/script.js"></script>
+    <script src="../js/lista-compras.js"></script>
 </body>
 </html>
 

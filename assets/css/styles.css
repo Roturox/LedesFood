@@ -426,6 +426,84 @@ button[type="submit"]:hover {
     background-color: #21867a;
 }
 
+/* Lista de compras */
+.shopping-list-container {
+    margin: 50px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+#new-item {
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.add-btn {
+    width: 80px;
+    padding: 10px;
+    background-color: #2a9d8f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add-btn:hover {
+    background-color: #21867a;
+}
+
+#shopping-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#shopping-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#shopping-list li.completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.clear-btn {
+    background-color: #e63946;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.clear-btn:hover {
+    background-color: #d62839;
+}
+
+.remove-btn {
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #d62839;
+}
 
 /* Foooter */
 footer {
