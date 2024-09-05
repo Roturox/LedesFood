@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3000;
 // Configurar la conexión a la base de datos
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'tu_usuario',
-    password: 'tu_contraseña',
-    database: 'ledesfood_db'
+    user: 'root',
+    password: '',
+    database: 'ledesfood'
 });
 
 // Conectar a la base de datos
