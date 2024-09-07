@@ -1,0 +1,31 @@
+                    
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+
+                                                    
+            <main>
+    <h2>Agregar Nueva Receta</h2>
+    <form action="new-recipe.php" method="POST" enctype="multipart/form-data">
+        <label for="title">Título de la Receta:</label>
+        <input type="text" name="title" required><br><br>
+
+        <label for="cookingTime">Tiempo de Cocina (minutos):</label>
+        <input type="number" name="cookingTime" required><br><br>
+
+        <label for="description">Descripción:</label>
+        <textarea name="description" required></textarea><br><br>
+
+        <label for="ingredients">Ingredientes (separados por coma):</label>
+        <input type="text" name="ingredients" required><br><br>
+
+        <label for="image">Imagen de la Receta:</label>
+        <input type="file" name="image" accept="image/*" required><br><br>
+
+        <button type="submit">Guardar Receta</button>
+    </form>
+</main>
