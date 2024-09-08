@@ -7,6 +7,11 @@ body {
     text-decoration: none;
 }
 
+h3 {
+    font: 1000;
+}
+
+
 /* Encabezado */
 header {
     display: flex;
@@ -59,6 +64,11 @@ header .logo {
     font-weight: bold;
 }
 
+
+
+
+
+
 /* Menú desplegable */
 .nav-menu {
     position: fixed;
@@ -97,6 +107,14 @@ header .logo {
 .nav-menu ul li a:hover {
     color: #2a9d8f; 
 }
+
+
+
+
+
+
+
+
 
 
 /* Index */
@@ -142,6 +160,15 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
 
 /* Nueva-Receta */
 
@@ -220,58 +247,94 @@ button[type="submit"]:hover {
 }
 
 
-/* Mis-Recetas */
-/* Estilos para la lista de recetas */
+/* Recetas guardadas */
+
+h4 {
+    font-size: 1.3  em;
+}
+
+.recipes-list {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
 .recipe-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     padding: 10px;
-    margin: 10px;
     text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-.recipe-card img {
+        /* Imagen del Modal cerrado */
+.recipe-card img {    
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
+.recipe-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #2a9d8f;
+}
+
+/* Modal estilos */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+    background-color: #fff;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: 10px;
+    text-align: left;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #888;
     cursor: pointer;
 }
+
+.close-btn:hover {
+    color: #2a9d8f;
+}
+
+
+
+
+
 
 
 
@@ -343,6 +406,15 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+
 /* Planificador-Menus */
 
 .menu-planner {
@@ -387,6 +459,15 @@ button[type="submit"]:hover {
 .save-btn:hover {
     background-color: #21867a;
 }
+
+
+
+
+
+
+
+
+
 
 /* Plan-Comidas */
 .meal-plan-container {
@@ -439,6 +520,15 @@ button[type="submit"]:hover {
 .save-btn:hover {
     background-color: #21867a;
 }
+
+
+
+
+
+
+
+
+
 
 /* Lista de compras */
 .shopping-list-container {
@@ -518,6 +608,15 @@ button[type="submit"]:hover {
 .remove-btn:hover {
     background-color: #d62839;
 }
+
+
+
+
+
+
+
+
+
 
 /* Foooter */
 footer {
