@@ -1,7 +1,7 @@
     <!-- header y demas -->
     <?php include 'includes/header.php'; ?>
 
-    
+    <main>
     <h1>Agregar Nueva Receta</h1>
     <form action="nueva-receta.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
@@ -13,8 +13,8 @@
             <input type="text" id="nombre" name="nombre" required><br>
         </div>
         <div class="form-group">
-            <label for="cooking-time">Tiempo de Cocina (minutos):</label>
-            <input type="number" id="cooking-time" name="cooking-time" min="1" required>
+            <label for="tiempo_preparacion">Tiempo de preparación (e.g., 30 minutos):</label>
+            <input type="text" id="tiempo_preparacion" name="tiempo_preparacion" required><br>
         </div>
         <div class="form-group">
             <label for="ingredientes">Ingredientes:</label>
@@ -26,38 +26,40 @@
         </div>
         <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
     </form>
-    </form>
+    </main>
 
 
         <!-- Parte logica del formulario  -->
             <?php
         include 'includes/db.php'; // Archivo de conexión a la base de datos
 
-        if (isset($_POST['submit'])) {
-            $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
-            $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
-            $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
-
-            // Procesar la imagen
-            $imagen = $_FILES['imagen']['name'];
-            $target_dir = "assets/images/";
-            $target_file = $target_dir . basename($imagen);
-
-            // Mover el archivo subido a la carpeta de destino
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
-                // Guardar la receta en la base de datos
-                $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file')";
-
-                if (mysqli_query($conn, $sql)) {
-                    echo "Receta agregada exitosamente.";
+            if (isset($_POST['submit'])) {
+                $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+                $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
+                $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
+                $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+        
+                // Procesar la imagen
+                $imagen = $_FILES['imagen']['name'];
+                $target_dir = "assets/images/";
+                $target_file = $target_dir . basename($imagen);
+        
+                // Mover el archivo subido a la carpeta de destino
+                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
+                    // Guardar la receta en la base de datos
+                    $sql = "INSERT INTO recetas (nombre, tiempo_preparacion, ingredientes, instrucciones, imagen) 
+                            VALUES ('$nombre', '$tiempo_preparacion', '$ingredientes', '$instrucciones', '$target_file')";
+        
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Receta agregada exitosamente.";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
                 } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    echo "Hubo un error subiendo la imagen.";
                 }
-            } else {
-                echo "Hubo un error subiendo la imagen.";
             }
-        }
-        ?>
+            ?>
 
 
 

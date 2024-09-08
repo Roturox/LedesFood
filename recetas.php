@@ -17,6 +17,7 @@ if (mysqli_num_rows($result) > 0) {
             'title' => htmlspecialchars($row['nombre']),
             'image' => htmlspecialchars($row['imagen']),
             'instrucciones' => htmlspecialchars($row['instrucciones']),
+            'tiempo_preparacion' => htmlspecialchars($row['tiempo_preparacion']),
             'ingredients' => htmlspecialchars($row['ingredientes'])
         ];
     }
@@ -26,112 +27,36 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
 ?>
-
-                <style>
-                    .recipes-list {
-                        margin-top: 50px;
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 50px;
-                        justify-content: center;
-                    }
-
-                    .recipe-card {
-                        width: 250px;
-                        border: 1px solid #ccc;
-                        border-radius: 10px;
-                        padding: 10px;
-                        text-align: center;
-                        background-color: #ffffff;
-                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                        cursor: pointer;
-                    }
-
-                            /* Imagen del Modal cerrado */
-                    .recipe-card img {    
-                        width: 100%;
-                        height: 200px;
-                        object-fit: cover;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                    }
-
-                    .recipe-card h3 {
-                        margin: 10px 0;
-                        font-size: 1.2em;
-                        color: #2a9d8f;
-                    }
-
-                    /* Modal estilos */
-                    .modal {
-                        display: none;
-                        position: fixed;
-                        z-index: 1000;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, 0.5);
-                    }
-
-                    .modal-content {
-                        background-color: #fff;
-                        margin: 10% auto;
-                        padding: 20px;
-                        border: 1px solid #888;
-                        width: 80%;
-                        max-width: 600px;
-                        border-radius: 10px;
-                        text-align: left;
-                        position: relative;
-                    }
-
-                    .modal-content img {
-                        width: 100%;
-                        height: 400px;
-                        border-radius: 10px;
-                        margin-bottom: 15px;
-                    }
-
-                    .close-btn {
-                        position: absolute;
-                        top: 10px;
-                        right: 20px;
-                        font-size: 1.5em;
-                        color: #888;
-                        cursor: pointer;
-                    }
-
-                    .close-btn:hover {
-                        color: #2a9d8f;
-                    }
-            </style>
+        <main>
+                <h1>Recetas Guardadas</h1>
+            <div id="recipes-list" class="recipes-list">
+                <!-- Aquí se cargarán las recetas guardadas -->
+                <?php foreach ($recipes as $index => $recipe): ?>
+                <div class="recipe-card" data-index="<?php echo $index; ?>">
+                    <img src="<?php echo $recipe['image']; ?>" alt="<?php echo $recipe['title']; ?>">
+                    <h3><?php echo $recipe['title']; ?></h3>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </main>
 
 
-    <h3 style="margin-top: 120px;">Recetas Guardadas</h3>
-
-    <div id="recipes-list" class="recipes-list">
-        <!-- Aquí se cargarán las recetas guardadas -->
-        <?php foreach ($recipes as $index => $recipe): ?>
-        <div class="recipe-card" data-index="<?php echo $index; ?>">
-            <img src="<?php echo $recipe['image']; ?>" alt="<?php echo $recipe['title']; ?>">
-            <h3><?php echo $recipe['title']; ?></h3>
+    <!-- Modal para mostrar los detalles de la receta -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-recipe-title"></h2>
+            <img id="modal-recipe-image" src="" alt="Foto de la receta">
+            <p><strong>Tiempo de Preparacion:</strong>  <span id="modal-recipe-tiempo_preparacion"></span></p>
+            <p><strong>instrucciones:</strong><br><span id="modal-recipe-instrucciones"></span></p>
+            <p><strong>Ingredientes:</strong> <span id="modal-recipe-ingredients"></span></p>
         </div>
-        <?php endforeach; ?>
     </div>
-</main>
 
-<!-- Modal para mostrar los detalles de la receta -->
-<div id="recipeModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2 id="modal-recipe-title"></h2>
-        <img id="modal-recipe-image" src="" alt="Foto de la receta">
-        <p><strong>Descripción:</strong> <span id="modal-recipe-description"></span></p>
-        <p><strong>Ingredientes:</strong> <span id="modal-recipe-ingredients"></span></p>
-    </div>
-</div>
 
+
+
+<!-- Script para la ventana emergente -->
 <script>
 // Recetas obtenidas desde PHP
 const savedRecipes = <?php echo json_encode($recipes); ?>;
@@ -155,7 +80,8 @@ function openModal(index) {
 
     document.getElementById('modal-recipe-title').textContent = recipe.title;
     document.getElementById('modal-recipe-image').src = recipe.image;
-    document.getElementById('modal-recipe-description').textContent = recipe.description;
+    document.getElementById('modal-recipe-instrucciones').textContent = recipe.instrucciones;
+    document.getElementById('modal-recipe-tiempo_preparacion').textContent = recipe.tiempo_preparacion;
     document.getElementById('modal-recipe-ingredients').textContent = recipe.ingredients;
 
     modal.style.display = 'block';
@@ -173,7 +99,7 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
-
+</script>
 
 
 <?php include 'includes/footer.php'; ?>

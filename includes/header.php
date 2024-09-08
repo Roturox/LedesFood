@@ -37,11 +37,10 @@
             <li><a href="index.php">Inicio</a></li>
             <li><a href="plan-comidas.php">Plan de Comidas</a></li>
             <li><a href="nueva-receta.php">Nueva Receta</a></li>
-            <li><a href="recetas.php">Rceta Guardadas</a></li>
+            <li><a href="recetas.php">Recetas Guardadas</a></li>
             <li><a href="lista-compras.php">Lista de Compras</a></li>
             <li><a href="planificador-menus.php">Planificador de Menús</a></li>
             <li><a href="cerrar-sesion.php" style="color: red;">Cerrar Sesión</a></li>
-            <li><a href="recetax.php" style="color: red;">dashdahgd</a></li>
             
 
 
