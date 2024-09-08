@@ -80,6 +80,6 @@
 
     <!-- Pie de Página -->
     <?php include 'includes/footer.php'; ?>
-    <script src="../js/planificador-menu.js"></script>
+    <script src="assets/js/planificador-menu.js"></script>
 
 
