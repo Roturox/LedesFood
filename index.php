@@ -34,7 +34,6 @@
         </div>
 
     </main>
-    dsadasdad
 
     <!-- Pie de Página -->
     <?php include 'includes/footer.php'; ?>
