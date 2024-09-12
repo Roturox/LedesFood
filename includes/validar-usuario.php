@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contraseña = $_POST['contraseña'];
 
         // Preparar la instrucción SQL para seleccionar el usuario
-        $stmt = $conectar->prepare("SELECT id, contraseña FROM usuarios WHERE usuario = ?");
+        $stmt = $conn->prepare("SELECT id, contraseña FROM usuarios WHERE usuario = ?");
         $stmt->bind_param("s", $usuario);
         $stmt->execute();
         $stmt->store_result();
@@ -34,20 +34,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 // Contraseña incorrecta
                 $error_message = "Contraseña incorrecta.";
-                header("Location: ../template/login.php?error=" . urlencode($error_message));
+                header("Location: ../includes/login.php?error=" . urlencode($error_message));
                 exit();
             }
         } else {
             // Usuario no encontrado
             $error_message = "Usuario no encontrado.";
-            header("Location: ../template/login.php?error=" . urlencode($error_message));
+            header("Location: ../includes/login.php?error=" . urlencode($error_message));
             exit();
         }
 
         $stmt->close();
     } else {
         $error_message = "Por favor, completa todos los campos del formulario.";
-        header("Location: ../template/login.php?error=" . urlencode($error_message));
+        header("Location: ../includes/login.php?error=" . urlencode($error_message));
         exit();
     }
 }

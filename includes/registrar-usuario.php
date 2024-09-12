@@ -20,7 +20,7 @@
     )";
 
     //comprobamos si se sube o no y lo envio a la pagina propiedades o al formulario para volver a intentar
-    $resultado =  $conectar->query($query);
+    $resultado =  $conn->query($query);
     if($resultado){
         echo "Subido";
         header('Location:../template/login.php');
