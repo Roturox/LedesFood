@@ -17,20 +17,17 @@
 
     <main>
     <div class="login-container">
-        <div class="alert" id="alert"></div>
-            <form action="../logic/validar_usuario.php" method="post" id="loginForm">
-                <label for="chk" aria-hidden="true">Iniciar Sesion</label>
-                    <div class="alert" id="alert"></div>
-                <input type="text"      name="usuario"    placeholder="Usuario"required>
-                    <div class="alert" id="alert"></div>
-                <input type="password"  name="contraseña" placeholder="Contraseña"required>
-                <button type="submit" value="Iniciar Sesión" class="btn">Inicar Sesion</button>
+            
+            <form action="../logic/registrar_usuario.php" method="post" id="loginForm">
+                <label for="chk" aria-hidden="true" >Registrarse</label>
+                <input type="text"      placeholder="Usuario"       name="usuario" required> 
+                <input type="email"     placeholder="Email"         name="email" required> 
+                <input type="Password"  placeholder="Contraseña"    name="contraseña" required> 
+                <button type="submit" value="Registrar" class="btn">Registrarse</button>
             </form>
             <div class="change">
-                ¿Aún no estás Registrado?   <a href="./signup.php">Registrarse</a>
+                    ¿Ya tenes una cuenta? <a href="./login.php">Inicia Sesion</a>
             </div>
-        </div>
-    </div>
     </main>
 
     <!-- Pie de Página -->
