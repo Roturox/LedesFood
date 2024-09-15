@@ -174,11 +174,11 @@ main {
 
 .nueva-receta {
     max-width: 500px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    border: solid red;
 }
 
 .form-group {
@@ -432,7 +432,7 @@ button[type="submit"]:hover {
     margin: 50px auto;
     max-width: 900px;
     text-align: center;
-    border: solid black;
+    border: solid #0f3733;
 }
 
 .menu-planner th, .menu-planner tr {

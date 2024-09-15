@@ -24,6 +24,16 @@
             <label for="instrucciones">Instrucciones:</label>
         <textarea id="instrucciones" name="instrucciones" required></textarea><br>
         </div>
+        
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">--Selecciona una categoría--</option>
+            <option value="Desayuno">Desayuno</option>
+            <option value="Almuerzo">Almuerzo</option>
+            <option value="Merienda">Merienda</option>
+            <option value="Cena">Cena</option>
+        </select><br><br>
+
         <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
     </form>
     </main>
@@ -38,6 +48,22 @@
                 $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
                 $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
                 $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+                $categoria = mysqli_real_escape_string($conn, $_POST['categoria']);
+
+                                // Validar que todos los campos estén completos
+                if (!empty($nombre) && !empty($ingredientes) && !empty($instrucciones) && !empty($categoria)) {
+                    // Insertar la receta en la base de datos
+                    $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, categoria) 
+                            VALUES ('$nombre', '$ingredientes', '$instrucciones', '$categoria')";
+
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Receta guardada exitosamente.";
+                    } else {
+                        echo "Error al guardar la receta: " . mysqli_error($conn);
+                    }
+                } else {
+                    echo "Por favor, completa todos los campos.";
+                }
         
                 // Procesar la imagen
                 $imagen = $_FILES['imagen']['name'];
@@ -46,15 +72,6 @@
         
                 // Mover el archivo subido a la carpeta de destino
                 if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
-                    // Guardar la receta en la base de datos
-                    $sql = "INSERT INTO recetas (nombre, tiempo_preparacion, ingredientes, instrucciones, imagen) 
-                            VALUES ('$nombre', '$tiempo_preparacion', '$ingredientes', '$instrucciones', '$target_file')";
-        
-                    if (mysqli_query($conn, $sql)) {
-                        echo "Receta agregada exitosamente.";
-                    } else {
-                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                    }
                 } else {
                     echo "Hubo un error subiendo la imagen.";
                 }

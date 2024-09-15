@@ -35,8 +35,6 @@
     <nav class="nav-menu" id="nav-menu">
         <ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="pruebas.php">Pruebas que hago para la pagina</a></li>
-            <li><a href="plan-comidas.php">Plan de Comidas</a></li>
             <li><a href="nueva-receta.php">Nueva Receta</a></li>
             <li><a href="recetas.php">Recetas Guardadas</a></li>
             <li><a href="lista-compras.php">Lista de Compras</a></li>

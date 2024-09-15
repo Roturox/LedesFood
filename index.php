@@ -30,7 +30,6 @@
         </section>
 
         </main>
-        
         <h2>Plan Semanal</h2>
     <div class="menu-planner">
         <table>
