@@ -1,46 +1,35 @@
-<main>
-    <h1>Mis Recetas</h1>
-    <form action="nueva-receta.php" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="imagen">Imagen de la receta:</label>
-        <input type="file" id="imagen" name="imagen" accept="image/*"><br>
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre de la receta:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
-        </div>
-        <div class="form-group">
-            <label for="cooking-time">Tiempo de Cocina (minutos):</label>
-            <input type="number" id="cooking-time" name="cooking-time" min="1" required>
-        </div>
-        <div class="form-group">
-            <label for="ingredientes">Ingredientes:</label>
-            <textarea id="ingredientes" name="ingredientes" required></textarea><br>
-        </div>
-        <div class="form-group">
-            <label for="instrucciones">Instrucciones:</label>
-        <textarea id="instrucciones" name="instrucciones" required></textarea><br>
-        </div>
-        <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
-    </form>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Recetas de Comida ( MEAL )</title>
 
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<main>
-    <h1>Recetas Guardadas</h1>
-    <div id="recipes-list" class="recipes-list">
-        <!-- Aquí se cargarán las recetas guardadas -->
-    </div>
-</main>
+    <!--Tailwindcss-->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Modal para mostrar los detalles de la receta -->
-<div id="recipeModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2 id="modal-recipe-title"></h2>
-        <img id="modal-recipe-image" src="" alt="Foto de la receta">
-        <p><strong>Descripción:</strong> <span id="modal-recipe-description"></span></p>
-        <p><strong>Tiempo de Cocina:</strong> <span id="modal-recipe-time"></span> minutos</p>
-        <p><strong>Ingredientes:</strong> <span id="modal-recipe-ingredients"></span></p>
-    </div>
-</div>
+</head>
+    <a href="../index.php">Volver a LedesFood</a>
+<body class="text-center m-8 bg-pink-700 text-white text 2xl">
+    
+    <button onclick="getMeal()" 
+    class="p-2 m-4 border rounded-md bg-green-700 hover:bg-white hover:text-green-900">
+        Next Meal / Siguiente Receta
+    </button>
+    <section>
+        <h1 id="strMeal"></h1>
+        <h3 id="strCategory"></h3>
+        <h3 id="strArea"></h3>
+
+        <img id="strMealThumb" src="" alt=""
+        class="h-80 w-80 rounded-md m-auto mt-8 mb-8">
+
+        <p id="strInstructions" class="text-justify"></p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

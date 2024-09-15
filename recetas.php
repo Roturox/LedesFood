@@ -47,7 +47,7 @@ mysqli_close($conn);
             <span class="close-btn">&times;</span>
             <h2 id="modal-recipe-title"></h2>
             <img id="modal-recipe-image" src="" alt="Foto de la receta">
-            <p><strong>Tiempo de Preparacion:</strong>  <span id="modal-recipe-tiempo_preparacion"></span></p>
+            <p><strong>Tiempo de Preparacion:</strong>  <span id="modal-recipe-tiempo_preparacion"></span> Minutos</p>
             <p><strong>instrucciones:</strong><br><span id="modal-recipe-instrucciones"></span></p>
             <p><strong>Ingredientes:</strong> <span id="modal-recipe-ingredients"></span></p>
         </div>

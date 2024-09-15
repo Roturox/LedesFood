@@ -172,7 +172,7 @@ main {
 
 /* Nueva-Receta */
 
-form {
+.nueva-receta {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -247,6 +247,13 @@ button[type="submit"]:hover {
 }
 
 
+
+
+
+
+
+
+
 /* Recetas guardadas */
 
 .recipes-list {
@@ -282,6 +289,15 @@ button[type="submit"]:hover {
     font-size: 1.2em;
     color: #2a9d8f;
 }
+
+
+
+
+
+
+
+
+
 
 /* Modal estilos */
 .modal {
@@ -412,7 +428,6 @@ button[type="submit"]:hover {
 
 
 /* Planificador-Menus */
-
 .menu-planner {
     margin: 50px auto;
     max-width: 900px;
@@ -425,7 +440,7 @@ button[type="submit"]:hover {
     margin-bottom: 20px;
 }
 
-.menu-planner th, .menu-planner td {
+.menu-planner th, .menu-planner tr {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;

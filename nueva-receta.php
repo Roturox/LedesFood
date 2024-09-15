@@ -3,7 +3,7 @@
 
     <main>
     <h1>Agregar Nueva Receta</h1>
-    <form action="nueva-receta.php" method="POST" enctype="multipart/form-data">
+    <form action="nueva-receta.php" method="POST" enctype="multipart/form-data" class="nueva-receta">
         <div class="form-group">
             <label for="imagen">Imagen de la receta:</label>
         <input type="file" id="imagen" name="imagen" accept="image/*"><br>

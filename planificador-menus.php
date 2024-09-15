@@ -4,8 +4,9 @@
     <!-- Sección Principal -->
 
     <main>
-        <h1>Planificador de Menú Semanal</h1>
-        <div class="menu-planner">
+    <h1>Planificador de Menú Semanal</h1>
+    <div class="menu-planner">
+        <form action="./includes/guardar-plan-semanal.php" method="POST" class="form-menu">
             <table>
                 <thead>
                     <tr>
@@ -17,65 +18,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Se generan filas para cada día de la semana -->
-                    <tr>
-                        <td>Lunes</td>
-                        <td><select class="meal-selector" data-day="lunes" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="lunes" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="lunes" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="lunes" data-meal="cena"></select></td>
-                    </tr>
-                    <!-- Replicar el mismo bloque para los demás días -->
-                    <tr>
-                        <td>Martes</td>
-                        <td><select class="meal-selector" data-day="martes" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="martes" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="martes" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="martes" data-meal="cena"></select></td>
-                    </tr>
-                    <tr>
-                        <td>Miercoles</td>
-                        <td><select class="meal-selector" data-day="miercoles" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="miercoles" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="miercoles" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="miercoles" data-meal="cena"></select></td>
-                    </tr>
-                    <tr>
-                        <td>jueves</td>
-                        <td><select class="meal-selector" data-day="jueves" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="jueves" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="jueves" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="jueves" data-meal="cena"></select></td>
-                    </tr>
-                    <tr>
-                        <td>Viernes</td>
-                        <td><select class="meal-selector" data-day="viernes" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="viernes" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="viernes" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="viernes" data-meal="cena"></select></td>
-                    </tr>
-                    <tr>
-                        <td>Sabado</td>
-                        <td><select class="meal-selector" data-day="sabado" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="sabado" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="sabado" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="sabado" data-meal="cena"></select></td>
-                    </tr>
-                    <tr>
-                        <td>Domingo</td>
-                        <td><select class="meal-selector" data-day="domingo" data-meal="desayuno"></select></td>
-                        <td><select class="meal-selector" data-day="domingo" data-meal="almuerzo"></select></td>
-                        <td><select class="meal-selector" data-day="domingo" data-meal="Merienda"></select></td>
-                        <td><select class="meal-selector" data-day="domingo" data-meal="cena"></select></td>
-                    </tr>
-                    <!-- Agrega más filas para los demás días de la semana -->
-                    <!-- Miércoles, Jueves, Viernes, Sábado, Domingo -->
-                    <!-- Aquí el mismo formato de celdas -->
+                    <?php
+                    // Días de la semana
+                    $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+                    // Obtener las recetas desde la base de datos
+                    include 'includes/db.php';
+                    $sql = "SELECT id, nombre FROM recetas";
+                    $result = mysqli_query($conn, $sql);
+                    $recetas = [];
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $recetas[] = $row;
+                        }
+                    }
+
+                    // Generar las filas para cada día
+                    foreach ($dias as $dia) {
+                        echo "<tr>";
+                        echo "<td>$dia</td>";
+
+                        // Crear el selector para cada comida (Desayuno, Almuerzo, Merienda, Cena)
+                        $comidas = ['desayuno', 'almuerzo', 'merienda', 'cena'];
+                        foreach ($comidas as $comida) {
+                            echo "<td>";
+                            echo "<select name='{$dia}_{$comida}'>";
+                            echo "<option value=''>-- Selecciona una receta --</option>";
+                            
+                            // Mostrar las recetas en el selector
+                            foreach ($recetas as $receta) {
+                                echo "<option value='" . $receta['id'] . "'>" . htmlspecialchars($receta['nombre']) . "</option>";
+                            }
+
+                            echo "</select>";
+                            echo "</td>";
+                        }
+
+                        echo "</tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
-            <button id="save-plan" class="save-btn">Guardar Plan de Menú</button>
-        </div>
-    </main>
+            <button type="submit" id="save-plan" class="save-btn">Guardar Plan de Menú</button>
+        </form>
+    </div>
+</main>
+
+<?php mysqli_close($conn); ?> <!-- Cerrar la conexión a la base de datos -->
 
 
     <!-- Pie de Página -->
