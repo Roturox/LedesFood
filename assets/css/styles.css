@@ -432,18 +432,20 @@ button[type="submit"]:hover {
     margin: 50px auto;
     max-width: 900px;
     text-align: center;
-}
-
-.menu-planner table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    border: solid black;
 }
 
 .menu-planner th, .menu-planner tr {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
+    height: 50px;
+    font-size: 1rem;
+}
+
+.menu-planner td {
+    padding: 20px;
+    width: 200px;
 }
 
 .menu-planner th {
@@ -453,7 +455,7 @@ button[type="submit"]:hover {
 
 .menu-planner select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
 }

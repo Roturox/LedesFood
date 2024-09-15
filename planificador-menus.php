@@ -24,6 +24,7 @@
 
                     // Obtener las recetas desde la base de datos
                     include 'includes/db.php';
+
                     $sql = "SELECT id, nombre FROM recetas";
                     $result = mysqli_query($conn, $sql);
                     $recetas = [];
@@ -45,9 +46,14 @@
                             echo "<select name='{$dia}_{$comida}'>";
                             echo "<option value=''>-- Selecciona una receta --</option>";
                             
+                            $sql = "SELECT id, nombre FROM recetas WHERE categoria = '$comida'";
+                            $result = mysqli_query($conn, $sql);
+
                             // Mostrar las recetas en el selector
-                            foreach ($recetas as $receta) {
-                                echo "<option value='" . $receta['id'] . "'>" . htmlspecialchars($receta['nombre']) . "</option>";
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['nombre']) . "</option>";
+                                }
                             }
 
                             echo "</select>";
