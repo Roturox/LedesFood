@@ -24,9 +24,8 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 // Cierra la conexión a la base de datos
-mysqli_close($conn);
-
 ?>
+
         <main>
                 <h1>Recetas Guardadas</h1>
             <div id="recipes-list" class="recipes-list">
@@ -100,6 +99,8 @@ window.addEventListener('click', (event) => {
     }
 });
 </script>
+
+
 
 
 <?php include 'includes/footer.php'; ?>

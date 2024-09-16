@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container-foto">
+    <figure class="image-container">
+        <img id="chosen-image">
+    </figure>
+    <input type="file" id="upload-button"  required name="foto_usuario" accept="image/*">
+    <label for="upload-button" class="upload-button" >
+        <i class="fas fa-upload"></i> &nbsp; Subir Foto de Perfil
+    </label>
+</div>
+
+</body>
+</html>
+
+<script>
+    let uploadButton = document.getElementById("upload-button");
+let chosenImage = document.getElementById("chosen-image");
+let fileName = document.getElementById("file-name");
+
+uploadButton.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton.files[0]);
+    reader.onload = () => {
+        chosenImage.setAttribute("src",reader.result);
+    }
+    fileName.textContent = uploadButton.files[0].name;
+}
+</script>
