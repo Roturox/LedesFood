@@ -1,5 +1,6 @@
     <!-- header y demas -->
     <?php include 'includes/header.php'; ?>
+    
     <!-- Sección Principal -->
     <main>
         <section class="dashboard">

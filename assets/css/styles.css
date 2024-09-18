@@ -325,6 +325,7 @@ input[type="file"]{
 
 
 
+
 /* Modal estilos */
 .modal {
     display: none;
@@ -354,6 +355,7 @@ input[type="file"]{
     height: 400px;
     border-radius: 10px;
     margin-bottom: 15px;
+
 }
 
 .close-btn {

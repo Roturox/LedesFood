@@ -15,8 +15,9 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $recipes[] = [
             'title' => htmlspecialchars($row['nombre']),
-            'image' => htmlspecialchars($row['imagen']),
-            'instrucciones' => htmlspecialchars($row['instrucciones']),
+            'imagen' => htmlspecialchars($row['imagen']),
+            'instrucciones' =>
+            ($row['instrucciones']),
             'tiempo_preparacion' => htmlspecialchars($row['tiempo_preparacion']),
             'ingredients' => htmlspecialchars($row['ingredientes'])
         ];
@@ -32,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
                 <!-- Aquí se cargarán las recetas guardadas -->
                 <?php foreach ($recipes as $index => $recipe): ?>
                 <div class="recipe-card" data-index="<?php echo $index; ?>">
-                    <img src="<?php echo $recipe['image']; ?>" alt="<?php echo $recipe['title']; ?>">
+                    <img src="<?php echo $recipe['imagen']; ?>" alt="<?php echo $recipe['title']; ?>">
                     <h3><?php echo $recipe['title']; ?></h3>
                 </div>
                 <?php endforeach; ?>
@@ -45,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2 id="modal-recipe-title"></h2>
-            <img id="modal-recipe-image" src="" alt="Foto de la receta">
+            <img id="modal-recipe-imagen" src="" alt="Foto de la receta" class="modal-recetas">
             <p><strong>Tiempo de Preparacion:</strong>  <span id="modal-recipe-tiempo_preparacion"></span> Minutos</p>
             <p><strong>instrucciones:</strong><br><span id="modal-recipe-instrucciones"></span></p>
             <p><strong>Ingredientes:</strong> <span id="modal-recipe-ingredients"></span></p>
@@ -78,7 +79,7 @@ function openModal(index) {
     const recipe = savedRecipes[index];
 
     document.getElementById('modal-recipe-title').textContent = recipe.title;
-    document.getElementById('modal-recipe-image').src = recipe.image;
+    document.getElementById('modal-recipe-imagen').src = recipe.imagen;
     document.getElementById('modal-recipe-instrucciones').textContent = recipe.instrucciones;
     document.getElementById('modal-recipe-tiempo_preparacion').textContent = recipe.tiempo_preparacion;
     document.getElementById('modal-recipe-ingredients').textContent = recipe.ingredients;

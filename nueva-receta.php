@@ -8,10 +8,10 @@
 
         <div class="container-foto">
             <figure class="image-container">
-                    <img id="chosen-image">
+                    <img id="imagen">
             </figure>
-            <input type="file" id="upload-button"  required name="foto_usuario" accept="image/*">
-            <label for="upload-button" class="upload-button" >
+            <input type="file" id="upload-button"  name="imagen" accept="image/*">
+            <label for="upload-button" class="upload-button" for="imagen">
                 <i class="fas fa-upload"></i> &nbsp; Foto Receta
             </label>
         </div>
@@ -40,8 +40,9 @@
             <option value="Cena">Cena</option>
         </select><br><br>
             </div>
+            <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
         </form>
-        <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
+
 
     </main>
 
@@ -51,32 +52,48 @@
         include 'includes/db.php'; // Archivo de conexión a la base de datos
 
             if (isset($_POST['submit'])) {
-                $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
-                $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
-                $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
-                $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
-                $categoria = mysqli_real_escape_string($conn, $_POST['categoria']);
 
-                                // Validar que todos los campos estén completos
-                if (!empty($nombre) && !empty($ingredientes) && !empty($instrucciones) && !empty($categoria)) {
-                    // Insertar la receta en la base de datos
-                    $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, categoria) 
-                            VALUES ('$nombre', '$ingredientes', '$instrucciones', '$categoria')";
+                    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+                    $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
+                    $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
+                    $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+                    $categoria = mysqli_real_escape_string($conn, $_POST['categoria']);
 
-                    if (mysqli_query($conn, $sql)) {
-                        echo "Receta guardada exitosamente.";
-                    } else {
-                        echo "Error al guardar la receta: " . mysqli_error($conn);
-                    }
-                } else {
-                    echo "Por favor, completa todos los campos.";
+                                    // Validar que todos los campos estén completos
+                    if (!empty($nombre) && !empty($ingredientes) && !empty($instrucciones) && !empty($categoria)) {
+                        // Insertar la receta en la base de datos
+        
+                        if (isset($_POST['submit'])) {
+                            $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+                            $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
+                            $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+                
+                            // Procesar la imagen
+                            $imagen = $_FILES['imagen']['name'];
+                            $target_dir = "assets/images/";
+                            $target_file = $target_dir . basename($imagen);
+                
+                            // Mover el archivo subido a la carpeta de destino
+                            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
+                                // Guardar la receta en la base de datos
+                                $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file')";
+                
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "Receta agregada exitosamente.";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
+                            } else {
+                                echo "Hubo un error subiendo la imagen.";
+                            }
+                        }
                 }
-            }
-            ?> 
+        }
+                ?>
 
                 <script>
                     let uploadButton = document.getElementById("upload-button");
-                let chosenImage = document.getElementById("chosen-image");
+                let chosenImage = document.getElementById("imagen");
                 let fileName = document.getElementById("file-name");
 
                 uploadButton.onchange = () => {
