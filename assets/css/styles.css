@@ -176,6 +176,7 @@ main {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding-left:25%;
 }
 
 .form-group {
@@ -251,16 +252,15 @@ button[type="submit"]:hover {
 .container-foto{
     text-align: center;
     width: 350px;
-    border: solid red;
 }
 
 .image-container{
-    border: solid blue;
     height: 80%;
 }
 .image-container img{
     height: 300px;
     width: 300px;
+    border: solid #21867a;
 }
 input[type="file"]{
     display: none;
@@ -276,13 +276,6 @@ input[type="file"]{
     margin: auto;
     cursor: pointer;
 }
-
-.form-group {
-
-
-
-
-
 
 
 
