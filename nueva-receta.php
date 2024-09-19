@@ -34,7 +34,7 @@
         
         <label for="categoria">Categoría:</label>
         <select id="categoria" name="categoria" required>
-            <option value="">--Selecciona una categoría--</option>
+            <option value="">Selecciona una categoría</option>
             <option value="Desayuno">Desayuno</option>
             <option value="Almuerzo">Almuerzo</option>
             <option value="Merienda">Merienda</option>
@@ -68,6 +68,7 @@
                             $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
                             $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
                             $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+                            
                 
                             // Procesar la imagen
                             $imagen = $_FILES['imagen']['name'];
@@ -77,10 +78,10 @@
                             // Mover el archivo subido a la carpeta de destino
                             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
                                 // Guardar la receta en la base de datos
-                                $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file')";
+                                $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file','$categoria')";
                 
                                 if (mysqli_query($conn, $sql)) {
-                                    header("Location: ./recetas.php"); // Redirigir a la página de inicio o panel de usuario
+                                    header("Location: ./recetas.php");
                                 } else {
                                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                                 }
