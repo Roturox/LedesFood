@@ -1,6 +1,6 @@
 <!-- recetas.php -->
 <?php include 'includes/header.php'; ?>
-<?php include 'includes/db.php'; ?> <!-- Incluimos la conexión a la base de datos -->
+<?php include 'includes/db.php'; ?>
 
 <?php
 // Consulta para obtener todas las recetas
@@ -14,12 +14,11 @@ if (mysqli_num_rows($result) > 0) {
     // Agrega cada receta al array
     while ($row = mysqli_fetch_assoc($result)) {
         $recipes[] = [
-            'title' => htmlspecialchars($row['nombre']),
-            'imagen' => htmlspecialchars($row['imagen']),
-            'instrucciones' =>
-            ($row['instrucciones']),
-            'tiempo_preparacion' => htmlspecialchars($row['tiempo_preparacion']),
-            'ingredients' => htmlspecialchars($row['ingredientes'])
+            'nombre' => isset($row['nombre']) ? htmlspecialchars($row['nombre']) : '',
+            'imagen' => isset($row['imagen']) ? htmlspecialchars($row['imagen']) : '',
+            'instrucciones' => isset($row['instrucciones']) ? htmlspecialchars($row['instrucciones']) : '',
+            'tiempo_preparacion' => isset($row['tiempo_preparacion']) ? htmlspecialchars($row['tiempo_preparacion']) : '',
+            'ingredients' => isset($row['ingredientes']) ? htmlspecialchars($row['ingredientes']) : ''
         ];
     }
 }
@@ -28,13 +27,16 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 
         <main>
-                <h1>Recetas Guardadas</h1>
+                <h1>Recetas Guardadas</h1><br>
+                <div class="btn-nueva-receta">
+                    <a href="./nueva-receta.php" class="milei"><i class="fa-solid fa-plus" ></i>  Agregar receta</a>
+                </div>
             <div id="recipes-list" class="recipes-list">
                 <!-- Aquí se cargarán las recetas guardadas -->
                 <?php foreach ($recipes as $index => $recipe): ?>
                 <div class="recipe-card" data-index="<?php echo $index; ?>">
-                    <img src="<?php echo $recipe['imagen']; ?>" alt="<?php echo $recipe['title']; ?>">
-                    <h3><?php echo $recipe['title']; ?></h3>
+                    <img src="<?php echo $recipe['imagen']; ?>" alt="<?php echo $recipe['nombre']; ?>">
+                    <h3><?php echo $recipe['nombre']; ?></h3>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -45,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
     <div id="recipeModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2 id="modal-recipe-title"></h2>
+            <h2 id="modal-recipe-nombre"></h2>
             <img id="modal-recipe-imagen" src="" alt="Foto de la receta" class="modal-recetas">
             <p><strong>Tiempo de Preparacion:</strong>  <span id="modal-recipe-tiempo_preparacion"></span> Minutos</p>
             <p><strong>instrucciones:</strong><br><span id="modal-recipe-instrucciones"></span></p>
@@ -78,7 +80,7 @@ function openModal(index) {
     const modal = document.getElementById('recipeModal');
     const recipe = savedRecipes[index];
 
-    document.getElementById('modal-recipe-title').textContent = recipe.title;
+    document.getElementById('modal-recipe-nombre').textContent = recipe.nombre;
     document.getElementById('modal-recipe-imagen').src = recipe.imagen;
     document.getElementById('modal-recipe-instrucciones').textContent = recipe.instrucciones;
     document.getElementById('modal-recipe-tiempo_preparacion').textContent = recipe.tiempo_preparacion;

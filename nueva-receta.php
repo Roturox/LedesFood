@@ -4,6 +4,7 @@
 
     <main>
     <h1>Agregar Nueva Receta</h1>
+
     <form action="nueva-receta.php" method="POST" enctype="multipart/form-data" class="nueva-receta">
 
         <div class="container-foto">
@@ -79,7 +80,7 @@
                                 $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file')";
                 
                                 if (mysqli_query($conn, $sql)) {
-                                    echo "Receta agregada exitosamente.";
+                                    header("Location: ./recetas.php"); // Redirigir a la página de inicio o panel de usuario
                                 } else {
                                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                                 }

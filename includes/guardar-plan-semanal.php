@@ -13,7 +13,7 @@ foreach ($dias as $dia) {
             // Guardar el plan semanal en la base de datos
             $sql = "INSERT INTO plan_semanal (dia, comida, receta_id) VALUES ('$dia', '$comida', '$receta_id')";
             if (mysqli_query($conn, $sql)) {
-                echo "Plan de $comida para $dia guardado correctamente.<br>";
+                header("Location:../index.php"); // Redirigir a la página de inicio o panel de usuario
             } else {
                 echo "Error: " . mysqli_error($conn) . "<br>";
             }
