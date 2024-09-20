@@ -1,11 +1,30 @@
     <!-- header y demas -->
     <?php include 'includes/header.php'; ?>
     
+
+    <?php
+    // Obtener el día actual en español
+    $dia_actual = date('N'); // Devuelve un número del 1 (Lunes) al 7 (Domingo)
+
+    // Convertir el número a un día en texto
+    $dias_semana = [
+        1 => 'Lunes',
+        2 => 'Martes',
+        3 => 'Miércoles',
+        4 => 'Jueves',
+        5 => 'Viernes',
+        6 => 'Sábado',
+        7 => 'Domingo'
+    ];
+    $dia_texto = $dias_semana[$dia_actual];
+    ?>
+
+
     <!-- Sección Principal -->
     <main>
         <section class="dashboard">
             <h1>¡Bienvenido, Roturo!</h1>
-            <h2>Comidas de Hoy</h2>
+            <h1>Comidas del Día: <?php echo $dia_texto; ?></h1>
             <div class="todays-meals">
                 <div class="meal-card">
                     <img src="./assets/images/desayuno.jpg" alt="Desayuno">
@@ -83,6 +102,10 @@
             </tbody>
         </table>
     </div>
+
+
+
+
 
 
 

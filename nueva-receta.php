@@ -49,49 +49,43 @@
 
 
         <!-- Parte logica del formulario  -->
-             <?php
-        include 'includes/db.php'; // Archivo de conexión a la base de datos
+                    <?php
+            include 'includes/db.php'; // Archivo de conexión a la base de datos
 
             if (isset($_POST['submit'])) {
 
-                    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
-                    $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
-                    $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
-                    $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
-                    $categoria = mysqli_real_escape_string($conn, $_POST['categoria']);
+                $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+                $tiempo_preparacion = mysqli_real_escape_string($conn, $_POST['tiempo_preparacion']);
+                $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
+                $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+                $categoria = mysqli_real_escape_string($conn, $_POST['categoria']); // Nueva categoría
 
-                                    // Validar que todos los campos estén completos
-                    if (!empty($nombre) && !empty($ingredientes) && !empty($instrucciones) && !empty($categoria)) {
-                        // Insertar la receta en la base de datos
-        
-                        if (isset($_POST['submit'])) {
-                            $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
-                            $ingredientes = mysqli_real_escape_string($conn, $_POST['ingredientes']);
-                            $instrucciones = mysqli_real_escape_string($conn, $_POST['instrucciones']);
+
+                                               // Validar que todos los campos estén completos
+                                               if (!empty($nombre) && !empty($ingredientes) && !empty($instrucciones) && !empty($categoria)) {
+                                                // Insertar la receta en la base de datos
+                                                $imagen = $_FILES['imagen']['name'];
+                                                        $target_dir = "assets/images/";
+                                                        $target_file = $target_dir . basename($imagen);
+
+                                                        // Mover el archivo subido a la carpeta de destino
+                                                        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
+                                                            // Guardar la receta en la base de datos
+                                                            $sql = "INSERT INTO recetas (nombre ,tiempo_preparacion, ingredientes, instrucciones, imagen, categoria) 
+                                                                    VALUES ('$nombre','$tiempo_preparacion', '$ingredientes', '$instrucciones', '$target_file', '$categoria')";
                             
-                
-                            // Procesar la imagen
-                            $imagen = $_FILES['imagen']['name'];
-                            $target_dir = "assets/images/";
-                            $target_file = $target_dir . basename($imagen);
-                
-                            // Mover el archivo subido a la carpeta de destino
-                            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $target_file)) {
-                                // Guardar la receta en la base de datos
-                                $sql = "INSERT INTO recetas (nombre, ingredientes, instrucciones, imagen) VALUES ('$nombre', '$ingredientes', '$instrucciones', '$target_file','$categoria')";
-                
-                                if (mysqli_query($conn, $sql)) {
-                                    header("Location: ./recetas.php");
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                                }
-                            } else {
-                                echo "Hubo un error subiendo la imagen.";
-                            }
-                        }
-                }
-        }
-                ?>
+                                                if (mysqli_query($conn, $sql)) {
+                                                    echo "Receta guardada exitosamente.";
+                                                } else {
+                                                    echo "Error al guardar la receta: " . mysqli_error($conn);
+                                                }
+                                            } else {
+                                                echo "Por favor, completa todos los campos.";
+                                            }
+                                        }
+            }
+            ?>
+
 
                 <script>
                     let uploadButton = document.getElementById("upload-button");
