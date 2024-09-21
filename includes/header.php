@@ -25,7 +25,7 @@
 
         <!-- Logo centrado -->
         <div class="logo">
-            Ledes<span style="color: red;">Food</span>
+            Ledes<span style="color: #359e08;">Food</span>
         </div>
 
         <!-- Iconos de favoritos y login -->

@@ -3,8 +3,10 @@
 
 
     <main>
-    <h1>Agregar Nueva Receta</h1>
-
+    <h1>Agregar Nueva Receta</h1><br>
+                <div class="btn-nueva-receta">
+                    <a href="./recetas.php" class="milei"><i class="fa-solid fa-plus" ></i>  Ver Recetas</a>
+                </div>
     <form action="nueva-receta.php" method="POST" enctype="multipart/form-data" class="nueva-receta">
 
         <div class="container-foto">
@@ -18,30 +20,31 @@
         </div>
 
 
-        <div class="form-group">
-            <label for="nombre">Nombre de la receta:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+            <div class="form-group">
+                <label for="nombre">Nombre de la receta:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
 
-            <label for="tiempo_preparacion">Tiempo de preparación (e.g., 30 minutos):</label>
-            <input type="text" id="tiempo_preparacion" name="tiempo_preparacion" required><br>
+                <label for="tiempo_preparacion">Tiempo de preparación (e.g., 30 minutos):</label>
+                <input type="text" id="tiempo_preparacion" name="tiempo_preparacion" required><br>
 
-            <label for="ingredientes">Ingredientes:</label>
-            <textarea id="ingredientes" name="ingredientes" required></textarea><br>
+                <label for="ingredientes">Ingredientes:</label>
+                <textarea id="ingredientes" name="ingredientes" required></textarea><br>
 
-            <label for="instrucciones">Instrucciones:</label>
-        <textarea id="instrucciones" name="instrucciones" required></textarea><br>
+                <label for="instrucciones">Instrucciones:</label>
+             <textarea id="instrucciones" name="instrucciones" required></textarea><br>
 
-        
-        <label for="categoria">Categoría:</label>
-        <select id="categoria" name="categoria" required>
-            <option value="">Selecciona una categoría</option>
-            <option value="Desayuno">Desayuno</option>
-            <option value="Almuerzo">Almuerzo</option>
-            <option value="Merienda">Merienda</option>
-            <option value="Cena">Cena</option>
-        </select><br><br>
-            </div>
+            
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="Desayuno">Desayuno</option>
+                <option value="Almuerzo">Almuerzo</option>
+                <option value="Merienda">Merienda</option>
+                <option value="Cena">Cena</option>
+                </select><br><br>
+
             <button type="submit" name="submit" value="Agregar Receta">Guardar Receta</button>
+            </div>
         </form>
 
 
